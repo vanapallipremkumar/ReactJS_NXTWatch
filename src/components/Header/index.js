@@ -1,64 +1,52 @@
-import {Link, withRouter} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import Popup from 'reactjs-popup'
-import Cookies from 'js-cookie'
 
 // import icons
 import {FaMoon} from 'react-icons/fa'
-import {FiSun, FiLogOut} from 'react-icons/fi'
+import {FiSun} from 'react-icons/fi'
 import {GiHamburgerMenu} from 'react-icons/gi'
+import {MdClose} from 'react-icons/md'
 
 // import local components
 import ThemeContext from '../../context/ThemeContext'
+import Logout from '../Logout'
+import LinksMenu from '../LinksMenu'
 
 import {
   HeaderContainer,
   HeaderLogo,
   HeaderButtonsContainer,
   HeaderButton,
-  LogoutContainer,
-  LogoutMessage,
-  PopupButtonsContainer,
-  PopupButton,
-  PopupOutlineButton,
+  LinksButton,
+  LinksPopupContainer,
+  CloseButton,
+  LinksContainer,
 } from './styledComponents'
 
-const Header = props => (
+const Header = () => (
   <ThemeContext.Consumer>
     {value => {
       const {darkTheme, onToggleThemeButton} = value
-      const iconSize = 24
       const iconColor = darkTheme ? '#ffffff' : '#070705'
-      const overlayStyle = {background: 'rgba(0,0,0,0.5)'}
-      const onClickLogoutConfirm = () => {
-        Cookies.remove('jwt_token')
-        const {history} = props
-        history.replace('/login')
-      }
 
-      const renderLogoutPopup = () => (
+      const renderPopupMenu = () => (
         <Popup
           modal
           trigger={
-            <HeaderButton type="button">
-              <FiLogOut size={iconSize} color={iconColor} />
-            </HeaderButton>
+            <LinksButton>
+              <GiHamburgerMenu size={30} color={iconColor} />
+            </LinksButton>
           }
-          overlayStyle={overlayStyle}
         >
           {close => (
-            <LogoutContainer dark={darkTheme}>
-              <LogoutMessage dark={darkTheme}>
-                Are you sure you want to logout?
-              </LogoutMessage>
-              <PopupButtonsContainer>
-                <PopupOutlineButton type="button" onClick={() => close()}>
-                  Cancel
-                </PopupOutlineButton>
-                <PopupButton type="button" onClick={onClickLogoutConfirm}>
-                  Confirm
-                </PopupButton>
-              </PopupButtonsContainer>
-            </LogoutContainer>
+            <LinksPopupContainer dark={darkTheme}>
+              <CloseButton onClick={() => close()}>
+                <MdClose size={28} color={iconColor} />
+              </CloseButton>
+              <LinksContainer>
+                <LinksMenu />
+              </LinksContainer>
+            </LinksPopupContainer>
           )}
         </Popup>
       )
@@ -76,17 +64,15 @@ const Header = props => (
             />
           </Link>
           <HeaderButtonsContainer>
-            <HeaderButton onClick={onToggleThemeButton}>
+            <HeaderButton onClick={onToggleThemeButton} data-testid="theme">
               {darkTheme ? (
-                <FiSun size={iconSize} color={iconColor} />
+                <FiSun size={26} color={iconColor} />
               ) : (
-                <FaMoon size={iconSize} color={iconColor} />
+                <FaMoon size={26} color={iconColor} />
               )}
             </HeaderButton>
-            <HeaderButton>
-              <GiHamburgerMenu size={iconSize} color={iconColor} />
-            </HeaderButton>
-            {renderLogoutPopup()}
+            {renderPopupMenu()}
+            <Logout />
           </HeaderButtonsContainer>
         </HeaderContainer>
       )
@@ -94,4 +80,4 @@ const Header = props => (
   </ThemeContext.Consumer>
 )
 
-export default withRouter(Header)
+export default Header

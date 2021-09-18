@@ -22,56 +22,39 @@ export const HeaderLogo = styled.img`
 export const HeaderButtonsContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-left: 10px;
 `
 export const HeaderButton = styled.button`
-  width: 26px;
-  height: 26px;
   background-color: transparent;
   border: none;
   outline: none;
   cursor: pointer;
-  margin: 0 0 0 10px;
+  margin: 0 0 0 16px;
+  padding: 0;
+`
+export const LinksButton = styled(HeaderButton)`
+  @media (min-width: 768px) {
+    display: none;
+  }
 `
 
-export const LogoutContainer = styled.div`
-  width: 300px;
+export const LinksPopupContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: ${props => (props.dark ? '#212121' : '#FFFFFF')};
+`
+export const CloseButton = styled(HeaderButton)`
+  margin: 40px 30px;
+  align-self: flex-end;
+`
+export const LinksContainer = styled.ul`
+  width: 100%;
+  min-width: 400px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 30px;
-  margin: 10px;
-  border-radius: 10px;
-  background-color: ${props => (props.dark ? '#212121' : '#FFFFFF')};
-`
-export const LogoutMessage = styled.p`
-  text-align: center;
-  font-family: 'Roboto';
-  font-size: 16px;
-  font-weight: bold;
-  color: ${props => (props.dark ? '#ffffff' : '#39628F')};
-  margin: 0 0 16px 0;
-`
-export const PopupButtonsContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  margin: 16px 0 0 0;
-`
-export const PopupButton = styled.button`
-  width: 80px;
-  height: 40px;
-  background-color: #2082f2;
-  color: #fff;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  border-radius: 4px;
-  margin: 0 6px;
-  font-weight: bold;
-`
-export const PopupOutlineButton = styled(PopupButton)`
-  background-color: transparent;
-  border: 1.5px solid #93a4b8;
-  color: #93a4b8;
+  align-items: center;
+  list-style-type: none;
 `
