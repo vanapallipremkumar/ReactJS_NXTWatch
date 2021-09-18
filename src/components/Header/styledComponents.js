@@ -28,7 +28,7 @@ export const HeaderButton = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
-  margin: 0 0 0 16px;
+  margin: 0 0 0 20px;
   padding: 0;
 `
 export const LinksButton = styled(HeaderButton)`
@@ -50,7 +50,6 @@ export const CloseButton = styled(HeaderButton)`
 `
 export const LinksContainer = styled.ul`
   width: 100%;
-  min-width: 400px;
   height: 100%;
   display: flex;
   flex-direction: column;

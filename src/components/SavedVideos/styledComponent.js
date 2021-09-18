@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const HomePageContainer = styled.div`
+export const SavedVideosPageContainer = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;

@@ -18,7 +18,7 @@ export const LogoutMessage = styled.p`
   font-size: 16px;
   font-weight: bold;
   color: ${props => (props.dark ? '#ffffff' : '#39628F')};
-  margin: 0 0 16px 0;
+  margin: 0 0 20px 0;
 `
 export const PopupButtonsContainer = styled.div`
   width: 100%;

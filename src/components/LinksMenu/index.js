@@ -1,3 +1,5 @@
+import {withRouter} from 'react-router-dom'
+
 import {AiFillHome} from 'react-icons/ai'
 import {MdWhatshot, MdPlaylistAdd} from 'react-icons/md'
 import {SiYoutubegaming} from 'react-icons/si'
@@ -13,10 +15,28 @@ const links = {
   savedVideos: 'SAVEDVIDEOS',
 }
 
-const LinksMenu = () => (
+const LinksMenu = props => (
   <ThemeContext.Consumer>
     {value => {
-      const {darkTheme, activeLinkId, onChangeActiveLinkId} = value
+      const {darkTheme} = value
+
+      const getActiveLinkId = pathname => {
+        let activeLinkId = ''
+        if (pathname === '/') {
+          activeLinkId = 'HOME'
+        } else if (pathname === '/trending') {
+          activeLinkId = 'TRENDING'
+        } else if (pathname === '/gaming') {
+          activeLinkId = 'GAMING'
+        } else if (pathname === '/saved-videos') {
+          activeLinkId = 'SAVEDVIDEOS'
+        }
+        return activeLinkId
+      }
+
+      const {location} = props
+      const {pathname} = location
+      const activeLinkId = getActiveLinkId(pathname)
 
       const getBackgroundColor = active => {
         let textColor = ''
@@ -48,21 +68,13 @@ const LinksMenu = () => (
 
       const getIconColor = active => (active ? '#ff0000' : '#606060')
 
-      const onClickHomeLink = () => onChangeActiveLinkId('HOME')
-
-      const onClickTrendingLink = () => onChangeActiveLinkId('TRENDING')
-
-      const onClickGamingLink = () => onChangeActiveLinkId('GAMING')
-
-      const onClickSavedVideosLink = () => onChangeActiveLinkId('SAVEDVIDEOS')
-
       const renderHomeLink = () => {
         const active = activeLinkId === links.home
         const bgColor = getBackgroundColor(active)
         const iconColor = getIconColor(active)
         const textColor = getTextColor(active)
         return (
-          <LinkContainer bgColor={bgColor} onClick={onClickHomeLink}>
+          <LinkContainer bgColor={bgColor}>
             <MenuLink to="/">
               <AiFillHome size="16" color={iconColor} />
               <LinkName color={textColor}>Home</LinkName>
@@ -77,7 +89,7 @@ const LinksMenu = () => (
         const iconColor = getIconColor(active)
         const textColor = getTextColor(active)
         return (
-          <LinkContainer bgColor={bgColor} onClick={onClickTrendingLink}>
+          <LinkContainer bgColor={bgColor}>
             <MenuLink to="/trending">
               <MdWhatshot size="16" color={iconColor} />
               <LinkName color={textColor}>Trending</LinkName>
@@ -92,7 +104,7 @@ const LinksMenu = () => (
         const iconColor = getIconColor(active)
         const textColor = getTextColor(active)
         return (
-          <LinkContainer bgColor={bgColor} onClick={onClickGamingLink}>
+          <LinkContainer bgColor={bgColor}>
             <MenuLink to="/gaming">
               <SiYoutubegaming size="16" color={iconColor} />
               <LinkName color={textColor}>Gaming</LinkName>
@@ -107,7 +119,7 @@ const LinksMenu = () => (
         const iconColor = getIconColor(active)
         const textColor = getTextColor(active)
         return (
-          <LinkContainer bgColor={bgColor} onClick={onClickSavedVideosLink}>
+          <LinkContainer bgColor={bgColor}>
             <MenuLink to="/saved-videos">
               <MdPlaylistAdd size="16" color={iconColor} />
               <LinkName color={textColor}>Saved videos</LinkName>
@@ -115,6 +127,7 @@ const LinksMenu = () => (
           </LinkContainer>
         )
       }
+
       return (
         <>
           {renderHomeLink()}
@@ -127,4 +140,4 @@ const LinksMenu = () => (
   </ThemeContext.Consumer>
 )
 
-export default LinksMenu
+export default withRouter(LinksMenu)

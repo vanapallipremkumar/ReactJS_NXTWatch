@@ -17,24 +17,20 @@ import SavedVideos from './components/SavedVideos'
 
 // Replace your code here
 class App extends Component {
-  state = {darkTheme: false, activeLinkId: 'HOME'}
+  state = {darkTheme: false}
 
   onToggleThemeButton = () =>
     this.setState(previousState => ({
       darkTheme: !previousState.darkTheme,
     }))
 
-  onChangeActiveLinkId = activeLinkId => this.setState({activeLinkId})
-
   render() {
-    const {darkTheme, activeLinkId} = this.state
+    const {darkTheme} = this.state
     return (
       <ThemeContext.Provider
         value={{
           darkTheme,
           onToggleThemeButton: this.onToggleThemeButton,
-          activeLinkId,
-          onChangeActiveLinkId: this.onChangeActiveLinkId,
         }}
       >
         <Switch>

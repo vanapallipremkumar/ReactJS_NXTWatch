@@ -16,7 +16,6 @@ export const LinkName = styled.p`
 `
 export const MenuLink = styled(Link)`
   width: 100%;
-  height: 100%;
   padding: 10px 150px;
   display: flex;
   align-items: center;
