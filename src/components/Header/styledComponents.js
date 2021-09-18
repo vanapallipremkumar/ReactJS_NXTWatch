@@ -58,3 +58,13 @@ export const LinksContainer = styled.ul`
   align-items: center;
   list-style-type: none;
 `
+export const ProfileButton = styled(HeaderButton)`
+  width: 30px;
+  height: 30px;
+  @media (max-width: 767px) {
+    display: none;
+  }
+`
+export const ProfileImage = styled.img`
+  width: 100%;
+`

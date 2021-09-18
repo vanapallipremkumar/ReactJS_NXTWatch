@@ -21,6 +21,8 @@ import {
   LinksPopupContainer,
   CloseButton,
   LinksContainer,
+  ProfileButton,
+  ProfileImage,
 } from './styledComponents'
 
 const Header = () => (
@@ -72,6 +74,12 @@ const Header = () => (
               )}
             </HeaderButton>
             {renderPopupMenu()}
+            <ProfileButton>
+              <ProfileImage
+                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
+                alt="profile"
+              />
+            </ProfileButton>
             <Logout />
           </HeaderButtonsContainer>
         </HeaderContainer>

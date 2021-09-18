@@ -1,5 +1,3 @@
-import {Component} from 'react'
-
 import {AiFillHome} from 'react-icons/ai'
 import {MdWhatshot, MdPlaylistAdd} from 'react-icons/md'
 import {SiYoutubegaming} from 'react-icons/si'
@@ -15,128 +13,118 @@ const links = {
   savedVideos: 'SAVEDVIDEOS',
 }
 
-class LinksMenu extends Component {
-  state = {activeLinkID: 'HOME'}
+const LinksMenu = () => (
+  <ThemeContext.Consumer>
+    {value => {
+      const {darkTheme, activeLinkId, onChangeActiveLinkId} = value
 
-  getBackgroundColor = (active, dark) => {
-    let textColor = ''
-    if (active && dark) {
-      textColor = '#383838'
-    } else if (!active && dark) {
-      textColor = 'transparent'
-    } else if (active && !dark) {
-      textColor = '#F1F5F9'
-    } else {
-      textColor = 'transparent'
-    }
-    return textColor
-  }
+      const getBackgroundColor = active => {
+        let textColor = ''
+        if (active && darkTheme) {
+          textColor = '#383838'
+        } else if (!active && darkTheme) {
+          textColor = 'transparent'
+        } else if (active && !darkTheme) {
+          textColor = '#F1F5F9'
+        } else {
+          textColor = 'transparent'
+        }
+        return textColor
+      }
 
-  getIconColor = active => (active ? '#ff0000' : '#606060')
+      const getTextColor = active => {
+        let textColor = ''
+        if (active && darkTheme) {
+          textColor = '#ffffff'
+        } else if (!active && darkTheme) {
+          textColor = '#C4C5C6'
+        } else if (active && !darkTheme) {
+          textColor = '#1D2A3B'
+        } else {
+          textColor = '#7B838C'
+        }
+        return textColor
+      }
 
-  getTextColor = (active, dark) => {
-    let textColor = ''
-    if (active && dark) {
-      textColor = '#ffffff'
-    } else if (!active && dark) {
-      textColor = '#C4C5C6'
-    } else if (active && !dark) {
-      textColor = '#1D2A3B'
-    } else {
-      textColor = '#7B838C'
-    }
-    return textColor
-  }
+      const getIconColor = active => (active ? '#ff0000' : '#606060')
 
-  onClickHomeLink = () => this.setState({activeLinkID: 'HOME'})
+      const onClickHomeLink = () => onChangeActiveLinkId('HOME')
 
-  onClickTrendingLink = () => this.setState({activeLinkID: 'TRENDING'})
+      const onClickTrendingLink = () => onChangeActiveLinkId('TRENDING')
 
-  onClickGamingLink = () => this.setState({activeLinkID: 'GAMING'})
+      const onClickGamingLink = () => onChangeActiveLinkId('GAMING')
 
-  onClickSavedVideosLink = () => this.setState({activeLinkID: 'SAVEDVIDEOS'})
+      const onClickSavedVideosLink = () => onChangeActiveLinkId('SAVEDVIDEOS')
 
-  renderHomeLink = dark => {
-    const {activeLinkID} = this.state
-    const active = activeLinkID === links.home
-    const bgColor = this.getBackgroundColor(active, dark)
-    const iconColor = this.getIconColor(active, dark)
-    const textColor = this.getTextColor(active, dark)
-    return (
-      <LinkContainer bgColor={bgColor} onClick={this.onClickHomeLink}>
-        <MenuLink to="/">
-          <AiFillHome size="16" color={iconColor} />
-          <LinkName color={textColor}>Home</LinkName>
-        </MenuLink>
-      </LinkContainer>
-    )
-  }
+      const renderHomeLink = () => {
+        const active = activeLinkId === links.home
+        const bgColor = getBackgroundColor(active)
+        const iconColor = getIconColor(active)
+        const textColor = getTextColor(active)
+        return (
+          <LinkContainer bgColor={bgColor} onClick={onClickHomeLink}>
+            <MenuLink to="/">
+              <AiFillHome size="16" color={iconColor} />
+              <LinkName color={textColor}>Home</LinkName>
+            </MenuLink>
+          </LinkContainer>
+        )
+      }
 
-  renderTrendingLink = dark => {
-    const {activeLinkID} = this.state
-    const active = activeLinkID === links.trending
-    const bgColor = this.getBackgroundColor(active, dark)
-    const iconColor = this.getIconColor(active, dark)
-    const textColor = this.getTextColor(active, dark)
-    return (
-      <LinkContainer bgColor={bgColor} onClick={this.onClickTrendingLink}>
-        <MenuLink to="/trending">
-          <MdWhatshot size="16" color={iconColor} />
-          <LinkName color={textColor}>Trending</LinkName>
-        </MenuLink>
-      </LinkContainer>
-    )
-  }
+      const renderTrendingLink = () => {
+        const active = activeLinkId === links.trending
+        const bgColor = getBackgroundColor(active)
+        const iconColor = getIconColor(active)
+        const textColor = getTextColor(active)
+        return (
+          <LinkContainer bgColor={bgColor} onClick={onClickTrendingLink}>
+            <MenuLink to="/trending">
+              <MdWhatshot size="16" color={iconColor} />
+              <LinkName color={textColor}>Trending</LinkName>
+            </MenuLink>
+          </LinkContainer>
+        )
+      }
 
-  renderGamingLink = dark => {
-    const {activeLinkID} = this.state
-    const active = activeLinkID === links.gaming
-    const bgColor = this.getBackgroundColor(active, dark)
-    const iconColor = this.getIconColor(active, dark)
-    const textColor = this.getTextColor(active, dark)
-    return (
-      <LinkContainer bgColor={bgColor} onClick={this.onClickGamingLink}>
-        <MenuLink to="/gaming">
-          <SiYoutubegaming size="16" color={iconColor} />
-          <LinkName color={textColor}>Gaming</LinkName>
-        </MenuLink>
-      </LinkContainer>
-    )
-  }
+      const renderGamingLink = () => {
+        const active = activeLinkId === links.gaming
+        const bgColor = getBackgroundColor(active)
+        const iconColor = getIconColor(active)
+        const textColor = getTextColor(active)
+        return (
+          <LinkContainer bgColor={bgColor} onClick={onClickGamingLink}>
+            <MenuLink to="/gaming">
+              <SiYoutubegaming size="16" color={iconColor} />
+              <LinkName color={textColor}>Gaming</LinkName>
+            </MenuLink>
+          </LinkContainer>
+        )
+      }
 
-  renderSavedVideosLink = dark => {
-    const {activeLinkID} = this.state
-    const active = activeLinkID === links.savedVideos
-    const bgColor = this.getBackgroundColor(active, dark)
-    const iconColor = this.getIconColor(active, dark)
-    const textColor = this.getTextColor(active, dark)
-    return (
-      <LinkContainer bgColor={bgColor} onClick={this.onClickSavedVideosLink}>
-        <MenuLink to="/saved-videos">
-          <MdPlaylistAdd size="16" color={iconColor} />
-          <LinkName color={textColor}>Saved videos</LinkName>
-        </MenuLink>
-      </LinkContainer>
-    )
-  }
-
-  render() {
-    return (
-      <ThemeContext.Consumer>
-        {value => {
-          const {darkTheme} = value
-          return (
-            <>
-              {this.renderHomeLink(darkTheme)}
-              {this.renderTrendingLink(darkTheme)}
-              {this.renderGamingLink(darkTheme)}
-              {this.renderSavedVideosLink(darkTheme)}
-            </>
-          )
-        }}
-      </ThemeContext.Consumer>
-    )
-  }
-}
+      const renderSavedVideosLink = () => {
+        const active = activeLinkId === links.savedVideos
+        const bgColor = getBackgroundColor(active)
+        const iconColor = getIconColor(active)
+        const textColor = getTextColor(active)
+        return (
+          <LinkContainer bgColor={bgColor} onClick={onClickSavedVideosLink}>
+            <MenuLink to="/saved-videos">
+              <MdPlaylistAdd size="16" color={iconColor} />
+              <LinkName color={textColor}>Saved videos</LinkName>
+            </MenuLink>
+          </LinkContainer>
+        )
+      }
+      return (
+        <>
+          {renderHomeLink()}
+          {renderTrendingLink()}
+          {renderGamingLink()}
+          {renderSavedVideosLink()}
+        </>
+      )
+    }}
+  </ThemeContext.Consumer>
+)
 
 export default LinksMenu

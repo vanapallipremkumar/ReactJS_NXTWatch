@@ -11,28 +11,38 @@ import ThemeContext from './context/ThemeContext'
 import ProtectedRoute from './components/ProtectedRoute'
 import Login from './components/Login'
 import Home from './components/Home'
+import Trending from './components/Trending'
+import Gaming from './components/Gaming'
+import SavedVideos from './components/SavedVideos'
 
 // Replace your code here
 class App extends Component {
-  state = {darkTheme: false}
+  state = {darkTheme: false, activeLinkId: 'HOME'}
 
   onToggleThemeButton = () =>
     this.setState(previousState => ({
       darkTheme: !previousState.darkTheme,
     }))
 
+  onChangeActiveLinkId = activeLinkId => this.setState({activeLinkId})
+
   render() {
-    const {darkTheme} = this.state
+    const {darkTheme, activeLinkId} = this.state
     return (
       <ThemeContext.Provider
         value={{
           darkTheme,
           onToggleThemeButton: this.onToggleThemeButton,
+          activeLinkId,
+          onChangeActiveLinkId: this.onChangeActiveLinkId,
         }}
       >
         <Switch>
           <Route exact path="/login" component={Login} />
           <ProtectedRoute exact path="/" component={Home} />
+          <ProtectedRoute exact path="/trending" component={Trending} />
+          <ProtectedRoute exact path="/gaming" component={Gaming} />
+          <ProtectedRoute exact path="/saved-videos" component={SavedVideos} />
         </Switch>
       </ThemeContext.Provider>
     )

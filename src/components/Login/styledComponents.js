@@ -22,7 +22,7 @@ export const LoginForm = styled.form`
   box-shadow: 0 0 40px rgba(120, 120, 120, 0.1);
   border-radius: 10px;
   @media (min-width: 768px) {
-    box-shadow: 0 0 40px 40 rgba(120, 120, 120, 0.1);
+    box-shadow: 0 0 0 20px rgba(200, 200, 200, 0.1);
   }
 `
 export const LogoContainer = styled.div`
