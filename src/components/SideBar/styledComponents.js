@@ -26,7 +26,7 @@ export const ContactUsContainer = styled.div`
   flex-direction: column;
   padding: 20px 0 20px 20px;
 `
-export const ContactUsHeading = styled.h1`
+export const ContactUsHeading = styled.p`
   font-size: 16px;
   font-family: 'Roboto';
   font-weight: bold;

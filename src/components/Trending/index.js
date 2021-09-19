@@ -64,7 +64,7 @@ class Trending extends Component {
 
   loadData = async () => {
     this.setState({pageStatus: status.loading})
-    const apiUrl = `https://apis.ccbp.in/videos/trending`
+    const trendingVideosApiUrl = `https://apis.ccbp.in/videos/trending`
     const options = {
       method: 'GET',
       headers: {
@@ -72,7 +72,7 @@ class Trending extends Component {
       },
     }
 
-    const response = await fetch(apiUrl, options)
+    const response = await fetch(trendingVideosApiUrl, options)
     const data = await response.json()
     if (response.status === 200) {
       const {videos} = data

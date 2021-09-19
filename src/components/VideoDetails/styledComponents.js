@@ -56,7 +56,7 @@ export const VideoDetailsLogoContainer = styled.div`
   align-items: center;
 `
 
-export const VideoDetailsTitle = styled.h1`
+export const VideoDetailsTitle = styled.p`
   font-size: 16px;
   font-family: 'Roboto';
   font-weight: 500;
@@ -177,7 +177,7 @@ export const ChannelNameSubscribersContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
 `
-export const ChannelName = styled.h1`
+export const ChannelName = styled.p`
   color: ${props => (props.dark ? '#f9f9f9' : '#20293c')};
   font-size: 14px;
   font-weight: bold;

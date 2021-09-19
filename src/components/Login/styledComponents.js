@@ -26,15 +26,17 @@ export const LoginForm = styled.form`
   }
 `
 export const LogoContainer = styled.div`
-  width: 40%;
-  height: 32px;
-  background-image: url(${props =>
-    props.dark
-      ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
-      : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'});
-  background-size: cover;
-  background-position: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `
+export const Logo = styled.img`
+  width: 120px;
+  @media (min-width: 768px) {
+    width: 150px;
+  }
+`
+
 export const InputFieldContainer = styled.div`
   width: 100%;
   display: flex;

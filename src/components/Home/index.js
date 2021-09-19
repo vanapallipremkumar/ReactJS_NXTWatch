@@ -70,7 +70,7 @@ class Home extends Component {
   loadData = async () => {
     this.setState({pageStatus: status.loading})
     const {search} = this.state
-    const apiUrl = `https://apis.ccbp.in/videos/all?search=${search}`
+    const homeVideosApiUrl = `https://apis.ccbp.in/videos/all?search=${search}`
     const options = {
       method: 'GET',
       headers: {
@@ -78,7 +78,7 @@ class Home extends Component {
       },
     }
 
-    const response = await fetch(apiUrl, options)
+    const response = await fetch(homeVideosApiUrl, options)
     const data = await response.json()
     if (response.status === 200) {
       const {videos} = data
@@ -119,6 +119,7 @@ class Home extends Component {
           type="button"
           onClick={this.onClickSearchButton}
           dark={dark}
+          data-testid="searchButton"
         >
           <AiOutlineSearch color={dark ? '#565554' : '#777777'} />
         </SearchButton>

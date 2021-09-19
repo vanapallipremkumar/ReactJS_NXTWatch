@@ -19,6 +19,7 @@ import {
   CheckBoxLabel,
   LoginButton,
   ErrorMessage,
+  Logo,
 } from './styledComponents'
 
 class Login extends Component {
@@ -74,7 +75,16 @@ class Login extends Component {
           return (
             <LoginPage dark={darkTheme}>
               <LoginForm dark={darkTheme} onSubmit={this.onSubmitForm}>
-                <LogoContainer dark={darkTheme} />
+                <LogoContainer>
+                  <Logo
+                    src={
+                      darkTheme
+                        ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
+                        : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
+                    }
+                    alt="website logo"
+                  />
+                </LogoContainer>
                 <InputFieldContainer>
                   <InputFieldLabel dark={darkTheme} htmlFor="username">
                     USERNAME

@@ -32,7 +32,7 @@ const NotFound = () => (
           />
           <FailedHeading dark={darkTheme}>Page Not Found</FailedHeading>
           <FailedDescription>
-            We are sorry, the page you requested could not be found.
+            we are sorry, the page you requested could not be found.
           </FailedDescription>
         </FailureContainer>
       )

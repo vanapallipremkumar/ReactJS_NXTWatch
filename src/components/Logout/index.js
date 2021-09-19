@@ -49,7 +49,7 @@ const Logout = props => (
           {close => (
             <LogoutContainer dark={darkTheme}>
               <LogoutMessage dark={darkTheme}>
-                Are you sure you want to logout?
+                Are you sure, you want to logout?
               </LogoutMessage>
               <PopupButtonsContainer>
                 <PopupOutlineButton type="button" onClick={() => close()}>

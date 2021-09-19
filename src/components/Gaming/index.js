@@ -59,7 +59,7 @@ class Gaming extends Component {
 
   loadData = async () => {
     this.setState({pageStatus: status.loading})
-    const apiUrl = `https://apis.ccbp.in/videos/gaming`
+    const gamingVideosApiUrl = `https://apis.ccbp.in/videos/gaming`
     const options = {
       method: 'GET',
       headers: {
@@ -67,7 +67,7 @@ class Gaming extends Component {
       },
     }
 
-    const response = await fetch(apiUrl, options)
+    const response = await fetch(gamingVideosApiUrl, options)
     const data = await response.json()
     if (response.status === 200) {
       const {videos} = data
@@ -147,7 +147,7 @@ class Gaming extends Component {
               <Header />
               <SidebarVideosContainer>
                 <Sidebar />
-                <VideosPageContainer dark={darkTheme} data-testid="home">
+                <VideosPageContainer>
                   {this.renderVideos(darkTheme)}
                 </VideosPageContainer>
               </SidebarVideosContainer>

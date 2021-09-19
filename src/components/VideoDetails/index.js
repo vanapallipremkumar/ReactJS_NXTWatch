@@ -83,7 +83,7 @@ class VideoDetails extends Component {
     const {match} = this.props
     const {params} = match
     const {id} = params
-    const apiUrl = `https://apis.ccbp.in/videos/${id}`
+    const videoDetailsApiUrl = `https://apis.ccbp.in/videos/${id}`
     const options = {
       method: 'GET',
       headers: {
@@ -91,7 +91,7 @@ class VideoDetails extends Component {
       },
     }
 
-    const response = await fetch(apiUrl, options)
+    const response = await fetch(videoDetailsApiUrl, options)
     const data = await response.json()
     if (response.status === 200) {
       this.onSuccessfulFetching(data.video_details)
@@ -122,7 +122,7 @@ class VideoDetails extends Component {
       />
       <FailedHeading dark={dark}>Oops! Something Went Wrong</FailedHeading>
       <FailedDescription>
-        We are having some trouble to complete your request. Please try again
+        We are having some trouble to complete your request. Please try again.
       </FailedDescription>
       <RetryButton type="button" onClick={this.onClickRetryButton}>
         Retry
