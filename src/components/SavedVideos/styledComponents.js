@@ -6,6 +6,7 @@ export const SavedVideosPageContainer = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  background-color: ${props => (props.dark ? '#0f0f0f' : '#f9f9f9')};
 `
 
 export const SidebarVideosContainer = styled.div`
@@ -91,16 +92,7 @@ export const FailedDescription = styled.p`
   margin: 10px 0;
   line-height: 1.5;
 `
-export const RetryButton = styled.button`
-  width: 100px;
-  height: 40px;
-  color: #ffffff;
-  background-color: #4f46e5;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  margin-top: 16px;
-`
+
 export const VideosListContainer = styled.ul`
   width: 100%;
   height: 100%;

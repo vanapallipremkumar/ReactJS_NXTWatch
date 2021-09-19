@@ -208,11 +208,11 @@ class Home extends Component {
         {value => {
           const {darkTheme} = value
           return (
-            <HomePageContainer>
+            <HomePageContainer dark={darkTheme} data-testid="home">
               <Header />
               <SidebarVideosContainer>
                 <Sidebar />
-                <VideosPageContainer dark={darkTheme} data-testid="home">
+                <VideosPageContainer dark={darkTheme}>
                   {showBanner && (
                     <Banner onClickCloseButton={this.onClickCloseButton} />
                   )}

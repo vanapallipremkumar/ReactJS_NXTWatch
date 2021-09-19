@@ -12,13 +12,13 @@ import {
 const Banner = props => {
   const {onClickCloseButton} = props
   return (
-    <BannerContainer>
+    <BannerContainer data-testid="banner">
       <WebsiteLogoCloseButtonContainer>
         <BannerWebsiteLogo
           src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
           alt="nxt watch logo"
         />
-        <BannerCloseButton onClick={onClickCloseButton}>
+        <BannerCloseButton onClick={onClickCloseButton} data-testid="close">
           <MdClose size="30" />
         </BannerCloseButton>
       </WebsiteLogoCloseButtonContainer>

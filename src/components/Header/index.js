@@ -39,6 +39,7 @@ const Header = () => (
               <GiHamburgerMenu size={30} color={iconColor} />
             </LinksButton>
           }
+          className="popup-content"
         >
           {close => (
             <LinksPopupContainer dark={darkTheme}>

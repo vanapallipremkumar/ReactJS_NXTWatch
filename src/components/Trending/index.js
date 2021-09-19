@@ -116,7 +116,7 @@ class Trending extends Component {
     const {videosList} = this.state
     return (
       <>
-        <TrendingTitleLogoContainer dark={dark}>
+        <TrendingTitleLogoContainer dark={dark} data-testid="banner">
           <TrendingLogoContainer dark={dark}>
             <MdWhatshot size="30" color="#FF031C" />
           </TrendingLogoContainer>
@@ -148,11 +148,11 @@ class Trending extends Component {
         {value => {
           const {darkTheme} = value
           return (
-            <TrendingPageContainer>
+            <TrendingPageContainer dark={darkTheme} data-testid="trending">
               <Header />
               <SidebarVideosContainer>
                 <Sidebar />
-                <VideosPageContainer dark={darkTheme} data-testid="home">
+                <VideosPageContainer dark={darkTheme}>
                   {this.renderVideos(darkTheme)}
                 </VideosPageContainer>
               </SidebarVideosContainer>

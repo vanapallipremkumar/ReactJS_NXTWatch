@@ -6,6 +6,7 @@ export const HomePageContainer = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  background-color: ${props => (props.dark ? '#181818' : '#f9f9f9')};
 `
 
 export const SidebarVideosContainer = styled.div`

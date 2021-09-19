@@ -43,6 +43,7 @@ const Logout = props => (
               <LogoutText dark={darkTheme}>Logout</LogoutText>
             </LogoutButton>
           }
+          className="popup-content"
           overlayStyle={overlayStyle}
         >
           {close => (

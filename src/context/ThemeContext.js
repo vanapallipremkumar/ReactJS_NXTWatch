@@ -4,7 +4,7 @@ const ThemeContext = React.createContext({
   darkTheme: false,
   onToggleThemeButton: () => {},
 
-  savedVideosIds: [],
+  savedVideos: [],
   onClickSaveButton: () => {},
 
   likedVideosIds: [],

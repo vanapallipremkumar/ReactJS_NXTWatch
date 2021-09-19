@@ -45,7 +45,6 @@ class Gaming extends Component {
   }
 
   onSuccessfulFetching = videos => {
-    console.log(videos)
     const camelCaseData = videos.map(video => ({
       id: video.id,
       thumbnailUrl: video.thumbnail_url,
@@ -112,7 +111,7 @@ class Gaming extends Component {
     const {videosList} = this.state
     return (
       <>
-        <GamingTitleLogoContainer dark={dark}>
+        <GamingTitleLogoContainer dark={dark} data-testid="banner">
           <GamingLogoContainer dark={dark}>
             <SiYoutubegaming size="30" color="#FF031C" />
           </GamingLogoContainer>
@@ -144,7 +143,7 @@ class Gaming extends Component {
         {value => {
           const {darkTheme} = value
           return (
-            <GamingPageContainer>
+            <GamingPageContainer dark={darkTheme} data-testid="gaming">
               <Header />
               <SidebarVideosContainer>
                 <Sidebar />

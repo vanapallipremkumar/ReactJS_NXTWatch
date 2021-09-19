@@ -6,6 +6,7 @@ export const GamingPageContainer = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  background-color: ${props => (props.dark ? '#0f0f0f' : '#f9f9f9')};
 `
 
 export const SidebarVideosContainer = styled.div`

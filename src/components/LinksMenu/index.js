@@ -24,11 +24,11 @@ const LinksMenu = props => (
         let activeLinkId = ''
         if (pathname === '/') {
           activeLinkId = 'HOME'
-        } else if (pathname === '/videos/trending') {
+        } else if (pathname === '/trending') {
           activeLinkId = 'TRENDING'
-        } else if (pathname === '/videos/gaming') {
+        } else if (pathname === '/gaming') {
           activeLinkId = 'GAMING'
-        } else if (pathname === '/videos/saved-videos') {
+        } else if (pathname === '/saved-videos') {
           activeLinkId = 'SAVEDVIDEOS'
         }
         return activeLinkId
@@ -90,7 +90,7 @@ const LinksMenu = props => (
         const textColor = getTextColor(active)
         return (
           <LinkContainer bgColor={bgColor}>
-            <MenuLink to="/videos/trending">
+            <MenuLink to="/trending">
               <MdWhatshot size="16" color={iconColor} />
               <LinkName color={textColor}>Trending</LinkName>
             </MenuLink>
@@ -105,7 +105,7 @@ const LinksMenu = props => (
         const textColor = getTextColor(active)
         return (
           <LinkContainer bgColor={bgColor}>
-            <MenuLink to="/videos/gaming">
+            <MenuLink to="/gaming">
               <SiYoutubegaming size="16" color={iconColor} />
               <LinkName color={textColor}>Gaming</LinkName>
             </MenuLink>
@@ -120,7 +120,7 @@ const LinksMenu = props => (
         const textColor = getTextColor(active)
         return (
           <LinkContainer bgColor={bgColor}>
-            <MenuLink to="/videos/saved-videos">
+            <MenuLink to="/saved-videos">
               <MdPlaylistAdd size="20" color={iconColor} />
               <LinkName color={textColor}>Saved videos</LinkName>
             </MenuLink>

@@ -2,7 +2,7 @@ import './App.css'
 
 // import third party packages
 import {Component} from 'react'
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 
 // import context
 import ThemeContext from './context/ThemeContext'
@@ -14,12 +14,14 @@ import Home from './components/Home'
 import Trending from './components/Trending'
 import Gaming from './components/Gaming'
 import SavedVideos from './components/SavedVideos'
+import VideoDetails from './components/VideoDetails'
+import NotFound from './components/NotFound'
 
 // Replace your code here
 class App extends Component {
   state = {
     darkTheme: false,
-    savedVideosIds: [],
+    savedVideos: [],
     likedVideosIds: [],
     dislikedVideosIds: [],
   }
@@ -29,18 +31,20 @@ class App extends Component {
       darkTheme: !previousState.darkTheme,
     }))
 
-  onClickSaveButton = id => {
-    const {savedVideosIds} = this.state
-    const savedVideoIdExists = savedVideosIds.includes(id)
-    if (savedVideoIdExists) {
+  onClickSaveButton = videoDetails => {
+    const {id} = videoDetails
+    const {savedVideos} = this.state
+    const savedVideoExists =
+      savedVideos.find(savedVideo => savedVideo.id === id) !== undefined
+    if (savedVideoExists) {
       this.setState(previousState => ({
-        savedVideosIds: previousState.savedVideosIds.filter(
-          savedVideoId => savedVideoId !== id,
+        savedVideos: previousState.savedVideos.filter(
+          savedVideo => savedVideo.id !== id,
         ),
       }))
     } else {
       this.setState(previousState => ({
-        savedVideosIds: [...previousState.savedVideosIds, id],
+        savedVideos: [...previousState.savedVideos, videoDetails],
       }))
     }
   }
@@ -86,7 +90,7 @@ class App extends Component {
   render() {
     const {
       darkTheme,
-      savedVideosIds,
+      savedVideos,
       likedVideosIds,
       dislikedVideosIds,
     } = this.state
@@ -96,7 +100,7 @@ class App extends Component {
           darkTheme,
           onToggleThemeButton: this.onToggleThemeButton,
 
-          savedVideosIds,
+          savedVideos,
           onClickSaveButton: this.onClickSaveButton,
 
           likedVideosIds,
@@ -109,13 +113,12 @@ class App extends Component {
         <Switch>
           <Route exact path="/login" component={Login} />
           <ProtectedRoute exact path="/" component={Home} />
-          <ProtectedRoute exact path="/videos/trending" component={Trending} />
-          <ProtectedRoute exact path="/videos/gaming" component={Gaming} />
-          <ProtectedRoute
-            exact
-            path="/videos/saved-videos"
-            component={SavedVideos}
-          />
+          <ProtectedRoute exact path="/trending" component={Trending} />
+          <ProtectedRoute exact path="/gaming" component={Gaming} />
+          <ProtectedRoute exact path="/saved-videos" component={SavedVideos} />
+          <ProtectedRoute exact path="/videos/:id" component={VideoDetails} />
+          <ProtectedRoute exact path="/not-found" component={NotFound} />
+          <Redirect to="/not-found" />
         </Switch>
       </ThemeContext.Provider>
     )
