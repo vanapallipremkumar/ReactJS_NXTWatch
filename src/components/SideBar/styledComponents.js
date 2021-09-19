@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 
 export const SidebarContainer = styled.div`
-  width: 30%;
-  max-width: 350px;
+  width: 25%;
+  min-width: 220px;
+  max-width: 250px;
   height: 100%;
   padding: 20px 0;
   background-color: ${props => (props.dark ? '#212121' : '#ffffff')};

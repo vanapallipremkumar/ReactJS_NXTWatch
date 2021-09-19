@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export default null
 
-export const HeaderContainer = styled.div`
+export const HeaderContainer = styled.nav`
   width: 100%;
   padding: 10px 20px;
   display: flex;

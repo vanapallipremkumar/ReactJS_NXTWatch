@@ -4,10 +4,8 @@ export default null
 
 export const BannerContainer = styled.div`
   width: 100%;
-  height: 200px;
   padding: 20px;
   @media (min-width: 768px) {
-    height: 250px;
     padding: 30px;
   }
   background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
@@ -21,6 +19,10 @@ export const WebsiteLogoCloseButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
+  @media (min-width: 768px) {
+    margin-bottom: 30px;
+  }
 `
 export const BannerWebsiteLogo = styled.img`
   width: 160px;
@@ -45,9 +47,11 @@ export const BannerDescription = styled.p`
   font-size: 14px;
   font-weight: 500;
   color: #21293e;
+  margin-bottom: 20px;
   @media (min-width: 768px) {
     width: 40%;
     font-size: 16px;
+    margin-bottom: 30px;
   }
 `
 export const BannerButton = styled.button`
