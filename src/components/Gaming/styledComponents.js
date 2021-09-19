@@ -18,7 +18,7 @@ export const VideosPageContainer = styled.div`
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: ${props => (props.dark ? '#0f0f0f' : '#f9f9f9')};
+  background: transparent;
   display: flex;
   flex-direction: column;
 `
@@ -108,7 +108,6 @@ export const VideosListContainer = styled.ul`
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   margin: 20px 0;
   padding: 20px;
   @media (min-width: 576px) {
