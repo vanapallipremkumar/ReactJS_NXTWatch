@@ -4,13 +4,13 @@ import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import 'react-loader-spinner/dist/loader/ThreeDots'
 
-import {MdWhatshot} from 'react-icons/md'
+import {SiYoutubegaming} from 'react-icons/si'
 
 import ThemeContext from '../../context/ThemeContext'
 
 import Header from '../Header'
 import Sidebar from '../SideBar'
-import VideoItem from '../VideoItem'
+import GameVideoItem from '../GameVideoItem'
 
 import {
   GamingPageContainer,
@@ -45,16 +45,12 @@ class Gaming extends Component {
   }
 
   onSuccessfulFetching = videos => {
+    console.log(videos)
     const camelCaseData = videos.map(video => ({
       id: video.id,
-      publishedAt: video.published_at,
       thumbnailUrl: video.thumbnail_url,
       title: video.title,
       viewCount: video.view_count,
-      channel: {
-        name: video.channel.name,
-        profileImageUrl: video.channel.profile_image_url,
-      },
     }))
     this.setState({
       pageStatus: status.success,
@@ -118,13 +114,13 @@ class Gaming extends Component {
       <>
         <GamingTitleLogoContainer dark={dark}>
           <GamingLogoContainer dark={dark}>
-            <MdWhatshot size="30" color="#FF031C" />
+            <SiYoutubegaming size="30" color="#FF031C" />
           </GamingLogoContainer>
           <GamingTitle dark={dark}>Gaming</GamingTitle>
         </GamingTitleLogoContainer>
         <VideosListContainer>
           {videosList.map(video => (
-            <VideoItem videoDetails={video} key={video.id} />
+            <GameVideoItem videoDetails={video} key={video.id} />
           ))}
         </VideosListContainer>
       </>

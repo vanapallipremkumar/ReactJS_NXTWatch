@@ -106,8 +106,10 @@ export const VideosListContainer = styled.ul`
   height: 100%;
   list-style-type: none;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
   margin: 20px 0;
+  padding: 20px;
   @media (min-width: 576px) {
     padding: 30px;
     margin: 0;

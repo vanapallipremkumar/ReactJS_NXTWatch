@@ -120,6 +120,5 @@ export const VideosListContainer = styled.ul`
   @media (min-width: 576px) {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
   }
 `
